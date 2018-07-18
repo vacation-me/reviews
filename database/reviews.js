@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // does mongoose allow trailing commas
-
 const userSchema = new Schema ({
     name: String,
     // need to fix this to take a url from Amazon s3
