@@ -4,64 +4,65 @@ const db = require('./database/reviews');
 const numUsers = 100;
 const numReviews = 500;
 
-const arrayOfAvatarURLs = ['https://s3-us-west-1.amazonaws.com/fec-reviews/1.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/2.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/3.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/4.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/5.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/6.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/7.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/8.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/9.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/10.jpg'];
+const avatarURLs = ['https://s3-us-west-1.amazonaws.com/fec-reviews/1.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/2.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/3.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/4.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/5.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/6.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/7.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/8.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/9.jpg', 'https://s3-us-west-1.amazonaws.com/fec-reviews/10.jpg'];
 
-let arrayOfUsers = [];
+let users = [];
 
-const generateRandomNumber = function (val) {
-    return Math.ceil(val * Math.random());
+const generateRandomNumber = function (lowerLimit, upperLimit) {
+    return lowerLimit + Math.floor(upperLimit * Math.random());
 }
 
-const userGeneration = function () {
+const generateUsers = function () {
     for (let i = 0; i < numUsers; i++) {
-        let tempObject = {};
-        tempObject.userId = i;
-        tempObject.name = faker.name.findName();
-        tempObject.avgRating = generateRandomNumber(5);
-        // will break in the case where Math.random() returns 1 - not sure if - 0.01 will work
-        tempObject.picture = arrayOfAvatarURLs[Math.floor((arrayOfAvatarURLs.length - 0.01) * Math.random())];
-        arrayOfUsers.push(tempObject);
+        let user = {};
+        user.userId = i;
+        user.name = faker.name.findName();
+        user.avgRating = generateRandomNumber(1, 5);
+        user.picture = avatarURLs[generateRandomNumber(0, avatarURLs.length)];
+        users.push(user);
     }
 }
 
-let arrayOfReviews = [];
+let reviews = [];
 
-const reviewGeneration = function () {
+const generateReviews = function () {
     for (let i = 0; i < numReviews; i++) {
-        let tempObject = {};
-        tempObject.houseId = generateRandomNumber(numUsers);
-        tempObject.reviewTitle = faker.lorem.sentence();
-        tempObject.reviewText = faker.lorem.paragraph();
-        tempObject.reviewDate = faker.date.past();
-        tempObject.helpfulCount = generateRandomNumber(10);
-        tempObject.reportedCount = {inappropriate: generateRandomNumber(10), hateful: generateRandomNumber(10), fake: generateRandomNumber(10)}
-        tempObject.response = {name: faker.name.findName(), responseText: faker.lorem.sentences(), responseDate: faker.date.past(), responsePicture: arrayOfAvatarURLs[Math.floor((arrayOfAvatarURLs.length - 0.01) * Math.random())]};
-        tempObject.rating = {overall: generateRandomNumber(5), interior: generateRandomNumber(5), exterior: generateRandomNumber(5), location: generateRandomNumber(5), noise: generateRandomNumber(5)};
-        // 1 is solo, 2 is group, 3 is couple, 4 is family
-        tempObject.group = generateRandomNumber(4);
-        tempObject.user = Math.floor(99 * Math.random());
-        arrayOfReviews.push(tempObject);
+        let review = {};
+        review.houseId = generateRandomNumber(numUsers);
+        review.reviewTitle = faker.lorem.sentence();
+        review.reviewText = faker.lorem.paragraph();
+        review.reviewDate = faker.date.past();
+        review.helpfulCount = generateRandomNumber(1, 10);
+        review.reportedCount = {inappropriate: generateRandomNumber(1, 10), hateful: generateRandomNumber(1, 10), fake: generateRandomNumber(1, 10)}
+        review.response = {name: faker.name.findName(), responseText: faker.lorem.sentences(), responseDate: faker.date.past(), responsePicture: avatarURLs[generateRandomNumber(0, avatarURLs.length)]};
+        review.rating = {overall: generateRandomNumber(1, 5), interior: generateRandomNumber(1, 5), exterior: generateRandomNumber(1, 5), location: generateRandomNumber(1, 5), noise: generateRandomNumber(1, 5)};
+        // 1 is solo, 2 is group, 3 is couple, 4 is family - acts like a boolean signifying that type of guest stayed
+        review.group = generateRandomNumber(1, 4);
+        review.user = generateRandomNumber(0, 100);
+        reviews.push(review);
     }
 }
 
-userGeneration();
-
-console.log('Array of Users: ', arrayOfUsers);
+generateUsers();
 
 const populateUsers = function () {
-    db.User.insertMany(arrayOfUsers, function (error, docs) {
-        if (error) console.log(error);
+    db.User.insertMany(users, function (error, docs) {
+        if (error) {
+            console.log(error);
+        }
         console.log(docs);
     });
 }
 
 populateUsers();
 
-reviewGeneration();
+generateReviews();
 
 const populateReviews = function () {
-    db.Review.insertMany(arrayOfReviews, function (error, docs) {
-        if (error) console.log(error);
+    db.Review.insertMany(reviews, function (error, docs) {
+        if (error) {
+            console.log(error);
+        }
         console.log(docs);
     });
 }
