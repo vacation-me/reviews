@@ -8,6 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "test": "jest",
     "seed-db": "node database-population.js",
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
@@ -21,12 +22,14 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^4.1.0",
+    "jest": "^23.4.1",
     "nodemon": "^1.18.3",
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
