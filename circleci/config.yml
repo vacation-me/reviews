@@ -7,14 +7,12 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
-      - image: mongo: 4.0.0
-      
+      - image: circleci/node:10-stretch-browsers
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
+      - image: circleci/mongo:3.4.4
+      
     working_directory: ~/reviews
 
     steps:
@@ -42,18 +40,18 @@ jobs:
         name: test
         command: npm test
 
-       - run:
-        name: code-coverage
-        command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      #  - run:
+      #   name: code-coverage
+      #   command: './node_modules/.bin/nyc report --reporter=text-lcov'
 
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
+      # - store_artifacts:
+      #     path: test-results.xml
+      #     prefix: tests
 
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+      # - store_artifacts:
+      #     path: coverage
+      #     prefix: coverage
 
-      - store_test_results:
-          path: test-results.xml
+      # - store_test_results:
+      #     path: test-results.xml
 

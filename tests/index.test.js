@@ -1,4 +1,4 @@
-const clientIndex = require('./client/index.jsx');
+const sum = require('../client/sum');
 
 test('adds 1 + 2 to equal 3', () => {
   expect(sum(1, 2)).toBe(3);
