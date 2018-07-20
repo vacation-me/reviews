@@ -33,9 +33,10 @@ class App extends React.Component {
     }
     return (
       <div id='reviews'>
-        <div id='searchSection'>Search Section</div>
-        <div id='aggregatedReviews'>Aggregate</div>
+        <div id='searchSection'><h1>Search Section</h1></div>
+        <div id='aggregatedReviews'><h1>Aggregate</h1></div>
         <div id="reviewList">
+          <h1>Reviews</h1>
           {reviewList}
         </div>
       </div>
