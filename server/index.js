@@ -6,11 +6,11 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/reviews/:id', (req, res) => {
-  console.log(req.params);
-  // models.reviews.getReviews((reviews) => {
-  //   // console.log(reviews);
-  //   res.send(reviews);
-  // });
+  // console.log(req.params.id);
+  models.reviews.getReviews((reviews) => {
+    console.log(reviews);
+    res.send(reviews);
+  }, req.params.id);
 });
 
 const port = process.env.PORT || 3000;

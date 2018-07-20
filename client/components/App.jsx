@@ -13,7 +13,6 @@ class App extends React.Component {
       type: 'GET',
       // contentType: 'application/json',
       dataType: 'json',
-      // data: {id: 72},
     }).done(() => {
 
     }).fail(() => {
