@@ -1,12 +1,11 @@
 import React from 'react';
-import $ from 'ajax';
 
 const ReviewEntry = (props) => {
+  console.log('here');
 
-  getRevies: () => {
-    $.ajax({
-
-    }).done();
-  };
-
+  return (
+    <h1>hi</h1>
+  );
 };
+
+export default ReviewEntry;
