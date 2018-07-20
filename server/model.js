@@ -1,11 +1,16 @@
-const mongoose = require('mongoose');
-const db = require('./database/index');
-mongoose.connect('mongodb://localhost/fec');
+const db = require('../database/index');
 
-db.Review.find({}, null, function (err, review) {
-  if (err) {
-    console.log('error in model');
+module.exports = {
+  reviews: {
+    getReviews: function (cb) {
+      db.Review.find({}, null, function (err, reviews) {
+        if (err) {
+          console.log('error in model');
+        }
+        cb(reviews);
+      });
+    }
   }
-  console.log(review);
-});
+};
+
 
