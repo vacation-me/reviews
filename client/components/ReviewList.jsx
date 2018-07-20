@@ -1,4 +1,6 @@
 import React from 'react';
+import ReviewEntry from './ReviewEntry';
+
 
 class ReviewList extends React.Component {
   constructor(props) {

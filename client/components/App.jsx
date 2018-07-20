@@ -1,4 +1,6 @@
 import React from 'react';
+import ReviewList from './ReviewList';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -6,7 +8,14 @@ class App extends React.Component {
   }
   render() {
     return (
-      <ReviewList />
+      <div id='reviews'>
+        <div id='searchSection'></div>
+        <div id='aggregatedReviews'></div>
+        <div id="reviewList">
+          <ReviewList />
+        </div>
+      </div>
+
     );
   }
 }
