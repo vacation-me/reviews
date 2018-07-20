@@ -1,5 +1,5 @@
 const faker = require('faker');
-const db = require('./database/reviews');
+const db = require('./database/index');
 
 const numUsers = 100;
 const numReviews = 500;
@@ -28,7 +28,7 @@ const reviews = [];
 const generateReviews = function () {
   for (let i = 0; i < numReviews; i++) {
     let review = {};
-    review.houseId = generateRandomNumber(numUsers);
+    review.houseId = generateRandomNumber(0, numUsers);
     review.reviewTitle = faker.lorem.sentence();
     review.reviewText = faker.lorem.paragraph();
     review.reviewDate = faker.date.past();
