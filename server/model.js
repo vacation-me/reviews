@@ -3,12 +3,12 @@ const _ = require('underscore');
 
 module.exports = {
   reviews: {
-    getReviews: function (cb) {
+    getReviews: function (cb, id) {
       // const reviews = [];
       // const combinedUsers = [];
       const promises = [];
       let combinedReview = [];
-      db.Review.find({}, null).then((reviews) => {
+      db.Review.find({houseId: id}, null).then((reviews) => {
         for (let review of reviews) {
           // console.log(combinedUsers); 
           // push something to promises
@@ -18,7 +18,7 @@ module.exports = {
               return err;
             }
             // $.extend({}, object1, object2);
-            console.log(review);
+            // console.log(review);
             // console.log(user);
             // console.log(_.extend(review, user));
             let combinedObject = [review, user];
