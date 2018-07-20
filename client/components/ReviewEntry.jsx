@@ -1,10 +1,12 @@
 import React from 'react';
 
 const ReviewEntry = (props) => {
-  console.log('here');
+  console.log(props);
 
   return (
-    <h1>hi</h1>
+    <div>
+      <img src={props.rev[1].picture} />
+    </div>
   );
 };
 

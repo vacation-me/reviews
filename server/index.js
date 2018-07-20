@@ -8,7 +8,7 @@ app.use(express.static('public'));
 app.get('/reviews/:id', (req, res) => {
   // console.log(req.params.id);
   models.reviews.getReviews((reviews) => {
-    console.log(reviews);
+    // console.log(reviews);
     res.send(reviews);
   }, req.params.id);
 });
