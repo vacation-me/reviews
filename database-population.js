@@ -1,5 +1,5 @@
 const faker = require('faker');
-const db = require('./database/reviews');
+const db = require('./database/index');
 
 const numUsers = 100;
 const numReviews = 500;
