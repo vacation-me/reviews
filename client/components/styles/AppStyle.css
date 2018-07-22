@@ -1,3 +1,16 @@
+#reviews {
+  display: grid;
+  grid-template-rows: 50px 150px 1fr;
+}
+
 #searchSection {
-  background: red
+  grid-row: 1;
+}
+
+#aggregatedReviews {
+  grid-row: 2;
+}
+
+#reviewList {
+  grid-row: 3;
 }
