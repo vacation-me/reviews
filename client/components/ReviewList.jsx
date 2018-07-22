@@ -1,5 +1,7 @@
 import React from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
+import style from './styles/ListStyle.css';
+
 
 
 class ReviewList extends React.Component {

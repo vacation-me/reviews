@@ -1,0 +1,4 @@
+#reviewContainer {
+  display: grid;
+  grid-gap: 15px;
+}
