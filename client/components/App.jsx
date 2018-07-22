@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewList from './ReviewList.jsx';
 import $ from 'jquery';
+import style from './styles/AppStyle.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -36,12 +37,12 @@ class App extends React.Component {
         <div id='searchSection'><h1>Search Section</h1></div>
         <div id='aggregatedReviews'><h1>Aggregate</h1></div>
         <div id="reviewList">
-          <h1>Reviews</h1>
+          <h1>Reviews</h1>  
           {reviewList}
         </div>
       </div>
 
-    );
+    );  
   }
 }
 
