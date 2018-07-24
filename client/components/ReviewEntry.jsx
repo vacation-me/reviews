@@ -3,7 +3,7 @@ import style from './styles/EntryStyle.css';
 import flag from './styles/icons/flag.svg';
 
 const ReviewEntry = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const formatDate = function (date) {
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
