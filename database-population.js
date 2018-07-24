@@ -35,7 +35,7 @@ const generateReviews = function () {
     review.helpfulCount = generateRandomNumber(1, 10);
     review.reportedCount = {inappropriate: generateRandomNumber(1, 10), hateful: generateRandomNumber(1, 10), fake: generateRandomNumber(1, 10)};
     review.response = {name: faker.name.findName(), responseText: faker.lorem.sentences(), responseDate: faker.date.past(), responsePicture: avatarURLs[generateRandomNumber(0, avatarURLs.length)]};
-    review.rating = {overall: generateRandomNumber(1, 5), interior: generateRandomNumber(1, 5), exterior: generateRandomNumber(1, 5), location: generateRandomNumber(1, 5), noise: generateRandomNumber(1, 5)};
+    review.rating = {overall: generateRandomNumber(1, 5), accuracy: generateRandomNumber(1, 5), location: generateRandomNumber(1, 5), communication: generateRandomNumber(1, 5), checkIn: generateRandomNumber(1, 5), cleanliness: generateRandomNumber(1, 5), value: generateRandomNumber(1, 5)};
     // 1 is solo, 2 is group, 3 is couple, 4 is family - acts like a boolean signifying that type of guest stayed
     review.group = generateRandomNumber(1, 4);
     review.user = generateRandomNumber(0, 100);
