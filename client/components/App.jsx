@@ -40,7 +40,6 @@ class App extends React.Component {
           <AggregatedReviews />
         </div>
         <div id="reviewList">
-          <h1>Reviews</h1>  
           {reviewList}
         </div>
       </div>

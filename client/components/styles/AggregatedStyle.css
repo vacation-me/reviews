@@ -1,0 +1,36 @@
+#aggregateContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 5px;
+  /* align-content: center; */
+}
+
+#accuracy{
+  display: grid;
+  align-self: center;
+}
+
+#location{
+  display: grid;
+  align-self: center;
+}
+
+#communication{
+  display: grid;
+  align-self: center;
+}
+
+#checkIn{
+  display: grid;
+  align-self: center;
+}
+
+#cleanliness{
+  display: grid;
+  align-self: center;
+}
+
+#value{
+  display: grid;
+  align-self: center;
+}
