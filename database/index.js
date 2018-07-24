@@ -19,7 +19,7 @@ const reviewSchema = new Schema ({
   reportedCount: {inappropriate: Number, hateful: Number, fake: Number},
   // in a real backend this would reference user to get name and responsePicture
   response: {name: String, responseText: String, responseDate: Date, responsePicture: String},
-  rating: {overall: Number, interior: Number, exterior: Number, location: Number, noise: Number},
+  rating: {overall: Number, accuracy: Number, location: Number, communication: Number, checkIn: Number, cleanliness: Number, value: Number},
   group: Number,
   // in the real world I would use the _id property on each document
   user: Number,
