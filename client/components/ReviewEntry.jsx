@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './styles/EntryStyle.css';
+import flag from './styles/icons/flag.svg';
 
 const ReviewEntry = (props) => {
   console.log(props);
@@ -22,7 +23,7 @@ const ReviewEntry = (props) => {
       <div id="reviewName">{props.rev[1].name}</div>
       <div id="reviewDate">{formatDate(props.rev[0].reviewDate)}</div>
       <div id="reviewText">{props.rev[0].reviewText}</div>
-      <div id="reviewFlag">F</div>
+      <div id="reviewFlag"><img id="flagIcon" src={flag} /></div>
       <div id="reviewBorder"></div>
     </div>
   );
