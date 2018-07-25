@@ -23,6 +23,20 @@ module.exports = {
           { loader: 'css-loader' }
         ]
       },
+      // {
+      //   test: /\.svg$/,
+      //   use: [
+      //     {
+      //       loader: 'babel-loader'
+      //     },
+      //     {
+      //       loader: 'react-svg-loader',
+      //       options: {
+      //         jsx: true // true outputs JSX tags
+      //       }
+      //     }
+      //   ]
+      // }
       {
         test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpg|gif)$/,
         use: ['file-loader']  
