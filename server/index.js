@@ -2,7 +2,6 @@ const express = require('express');
 const models = require('./model.js');
 const app = express();
 
-
 app.use(express.static('public'));
 
 app.get('/reviews/:id', (req, res) => {
@@ -17,25 +16,21 @@ app.get('/reviews/:id', (req, res) => {
   };
 
   models.reviews.getReviews((reviews) => {
+    // numReviews is counted to serve as the divisor when calcualting average scores
     let numReviews = 0;
+    // this sums the values for each categories
     for (let review of reviews) {
-      aggregateObject.overall = aggregateObject.overall + review[0].rating.overall;
-      aggregateObject.accuracy = aggregateObject.accuracy + review[0].rating.accuracy;
-      aggregateObject.location = aggregateObject.location + review[0].rating.location;
-      aggregateObject.communication = aggregateObject.communication + review[0].rating.communication;
-      aggregateObject.checkIn = aggregateObject.checkIn + review[0].rating.checkIn;
-      aggregateObject.cleanliness = aggregateObject.cleanliness + review[0].rating.cleanliness;
-      aggregateObject.value = aggregateObject.value + review[0].rating.value;
+      for (let key in aggregateObject) {
+        aggregateObject[key] = aggregateObject[key] + review[0].rating[key];
+      }
+      // this incremements the divisor
       numReviews += 1;
     }
-    aggregateObject.overall = aggregateObject.overall / numReviews;
-    aggregateObject.accuracy = aggregateObject.accuracy / numReviews;
-    aggregateObject.location = aggregateObject.location / numReviews;
-    aggregateObject.communication = aggregateObject.communication / numReviews;
-    aggregateObject.checkIn = aggregateObject.checkIn / numReviews;
-    aggregateObject.cleanliness = aggregateObject.cleanliness / numReviews;
-    aggregateObject.value = aggregateObject.value / numReviews;
-    console.log(aggregateObject);
+    // this section calculates average score for each category
+    for (let key in aggregateObject) {
+      aggregateObject[key] = aggregateObject[key] / numReviews;
+    }
+    // the aggregateObject is added to the reviews array
     reviews.push(aggregateObject);
     res.send(reviews);
   }, req.params.id);

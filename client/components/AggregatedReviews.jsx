@@ -1,44 +1,44 @@
 import React from 'react';
 import $ from 'jquery';
 import './styles/AggregatedStyle.css';
-import starClear from './styles/icons/star-clear.svg';
-import star from './styles/icons/star.svg';
-import starHalf from './styles/icons/star-half.svg';
-
-
-
+import emptyStar from './styles/icons/star-clear.svg';
+import halfStar from './styles/icons/star-half.svg';
+import fullStar from './styles/icons/star.svg';
 
 const AggregatedReviews = (props) => {
-  console.log('Ratings in child: ', props.ratings);
-
   const renderStars = function (rating, outerDiv) {
+
+    // don't add stars on re-render if they already exist
     if ($(outerDiv).children().length !== 0) {
       return;
     }
-    console.log('here');
+    // numStars is used to ensure that 5 stars are always rendered
     let numStars = 0;
+    // this loop renders all initial full stars
     while (rating / 1 >= 1) {
-      $(outerDiv).append(`<img class="star" src=${star} />`);
+      $(outerDiv).append(`<img class="star" src=${fullStar} />`);
       rating -= 1;
       numStars += 1;
     }
+    // this loop renders either an empty, half, or full start depending on decimal
     while (rating !== 0) {
       if (rating > 0.75) {
-        $(outerDiv).append(`<img class="star" src=${star} />`);
+        $(outerDiv).append(`<img class="star" src=${fullStar} />`);
         rating = 0;
         numStars += 1;
       } else if (rating > 0.25) {
-        $(outerDiv).append(`<img class="star" src=${starHalf} />`);
+        $(outerDiv).append(`<img class="star" src=${halfStar} />`);
         rating = 0;
         numStars += 1;
       } else {
-        $(outerDiv).append(`<img class="star" src=${starClear} />`);
+        $(outerDiv).append(`<img class="star" src=${emptyStar} />`);
         rating = 0;
         numStars += 1;
       }
     }
+    // this renders remaining empty stars when necessary
     while (numStars !== 5) {
-      $(outerDiv).append(`<img class="star" src=${starClear} />`);
+      $(outerDiv).append(`<img class="star" src=${emptyStar} />`);
       numStars += 1;
     }
   };
