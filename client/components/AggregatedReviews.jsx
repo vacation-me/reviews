@@ -6,7 +6,7 @@ import halfStar from './styles/icons/star-half.svg';
 import fullStar from './styles/icons/star.svg';
 
 const AggregatedReviews = (props) => {
-  const renderStars = function (rating, outerDiv) {
+  const renderStars = function (rating) {
     let outputArray = [];
     let numStars = 0;
     // this loop renders all initial full stars
@@ -38,27 +38,27 @@ const AggregatedReviews = (props) => {
     <div id="aggregateContainer">
       <div id="accuracy">Accuracy</div>
       <div id="accuracyStars" className="starSet">
-        {renderStars(props.ratings.accuracy, '#accuracyStars')}
+        {renderStars(props.ratings.accuracy)}
       </div>
       <div id="location">Location</div>
       <div id="locationStars" className="starSet">
-        {renderStars(props.ratings.location, '#locationStars')}
+        {renderStars(props.ratings.location)}
       </div>
       <div id="communication">Communication</div>
       <div id="communicationStars" className="starSet">
-        {renderStars(props.ratings.communication, '#communicationStars')}
+        {renderStars(props.ratings.communication)}
       </div>
       <div id="checkIn">Check-in</div>
       <div id="checkInStars" className="starSet">
-        {renderStars(props.ratings.checkIn, '#checkInStars')}
+        {renderStars(props.ratings.checkIn)}
       </div>
       <div id="cleanliness">Cleanliness</div>
       <div id="cleanlinessStars" className="starSet">
-        {renderStars(props.ratings.cleanliness, '#cleanlinessStars')}
+        {renderStars(props.ratings.cleanliness)}
       </div>
       <div id="value">Value</div>
       <div id="valueStars" className="starSet">
-        {renderStars(props.ratings.value, '#valueStars')}
+        {renderStars(props.ratings.value)}
       </div>
     </div>
   );

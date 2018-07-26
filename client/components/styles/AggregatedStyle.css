@@ -8,38 +8,17 @@
   margin: 0px 10px;
 }
 
-.left{
-  margin-right: 50px;
-}
-
 .star {
   height: 14px;
   display: inline-block;
   position: relative;
 }
 
-.outerStar {
-  height: 10px;
-  display: inline-block;
-  position: relative;
-}
-
-.innerStar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-}
-
 #aggregateContainer {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-row-gap: 10px;
   grid-column-gap: 10px;
-
-  /* align-content: center; */
 }
 
 #accuracy{
