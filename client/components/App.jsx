@@ -26,7 +26,7 @@ class App extends React.Component {
       dataType: 'json',
     }).done((reviews) => {
       // separate aggregatedValues to send down to AggregatedReviews
-      let aggregatedValues = reviews[reviews.length - 1];
+      const aggregatedValues = reviews[reviews.length - 1];
       this.setState({aggregatedValues: aggregatedValues});
       // remove aggregatedValues from reviews array
       reviews.splice(-1, 1);
@@ -41,22 +41,6 @@ class App extends React.Component {
   }
 
   render() {
-    /* not sure if I should delete this if statement method of rendering subcomponent.
-    with my current method of short-circuiting I see 0s breifly flash on the screen */
-
-    // let reviewList;
-    // let ratings;
-    // if (this.state.reviews.length > 0) {
-    //   reviewList = <ReviewList reviews={this.state.reviews} />;
-    // } else {
-    //   reviewList = '';
-    // }
-    // if (Object.keys(this.state.aggregatedValues).length > 0) {
-    //   ratings = <AggregatedReviews ratings={this.state.aggregatedValues} />;
-    // } else {
-    //   ratings = '';
-    // }
-
     // there are three distinct sections to the review component
     return (
       <div id='reviews'>
