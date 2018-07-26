@@ -2,24 +2,31 @@ import React from 'react';
 import ReviewList from './ReviewList.jsx';
 import AggregatedReviews from './AggregatedReviews.jsx';
 import $ from 'jquery';
-import style from './styles/AppStyle.css';
+import './styles/AppStyle.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: []};
+    this.state = {reviews: [], aggregatedValues: {}};
     this.getReviews();
   }
 
   getReviews() {
+    // temporary placeholder to select a random house to view
     let randomHouse = Math.floor(100 * Math.random());
+    // get request retrieves reviews and aggregated values from server
     $.ajax({
       url: `/reviews/${randomHouse}`,
       type: 'GET',
-      // contentType: 'application/json',
       dataType: 'json',
     }).done((reviews) => {
-      // console.log('reviews in the client:', reviews);
+      // separate aggregatedValues to send down to AggregatedReviews
+      let aggregatedValues = reviews[reviews.length - 1];
+      this.setState({aggregatedValues: aggregatedValues});
+      // remove aggregatedValues from reviews array
+      reviews.splice(-1, 1);
+      /* the shape of reviews is an array of tuples where the index 0 of the tuple is user info
+      and index 1 is the associated review info */
       this.setState({reviews: reviews});
     }).fail(() => {
       console.log('reviews get request failed');
@@ -27,21 +34,31 @@ class App extends React.Component {
   }
 
   render() {
-    let reviewList;
-    if (this.state.reviews.length > 0) {
-      reviewList = <ReviewList reviews={this.state.reviews} />;
-    } else {
-      reviewList = '';
-    }
+    /* not sure if I should delete this if statement method of rendering subcomponent.
+    with my current method of short-circuiting I see 0s breifly flash on the screen */
+
+    // let reviewList;
+    // let ratings;
+    // if (this.state.reviews.length > 0) {
+    //   reviewList = <ReviewList reviews={this.state.reviews} />;
+    // } else {
+    //   reviewList = '';
+    // }
+    // if (Object.keys(this.state.aggregatedValues).length > 0) {
+    //   ratings = <AggregatedReviews ratings={this.state.aggregatedValues} />;
+    // } else {
+    //   ratings = '';
+    // }
+
+    // there are three distinct sections to the review component
     return (
       <div id='reviews'>
         <div id='searchSection'><h1>Search Section</h1></div>
         <div id='aggregatedReviews'>
-          <AggregatedReviews />
+          {Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.aggregatedValues} />}
         </div>
         <div id="reviewList">
-          <h1>Reviews</h1>  
-          {reviewList}
+          {this.state.reviews.length && <ReviewList reviews={this.state.reviews} />}
         </div>
       </div>
 
