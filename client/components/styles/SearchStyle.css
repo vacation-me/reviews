@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Cereal-Bold';
+  src: url('./fonts/AirbnbCereal-Bold.ttf') format('truetype');
+  /* font-weight: 400; */
+}
+
+.starSet {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-content: center;
+  justify-content: center;
+  justify-items: end;
+  margin: 0px 10px;
+}
+
+#searchContainer {
+  display: grid;
+  grid-template-columns: 100px 140px 1fr;
+  align-self: center;
+}
+
+#reviewCount {
+  grid-column: 1;
+  justify-items: center;
+  justify-content: center;
+  font-family: 'Cereal-Bold';
+  font-size: 20px;
+}
+
+#overallScore {
+  grid-column: 2;
+}
+
+#searchForm {
+  display: grid;
+  grid-column: 3;
+  grid-template-columns: 1fr 200px;
+}
+
+#searchBar {
+  grid-column: 2;
+  justify-self: stretch;
+}
+

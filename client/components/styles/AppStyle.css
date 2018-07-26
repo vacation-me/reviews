@@ -1,12 +1,25 @@
+@font-face {
+  font-family: 'Cereal-Light';
+  src: url('./fonts/AirbnbCereal-Light.ttf') format('truetype');
+  /* font-weight: 400; */
+}
+* {
+  font-family: 'Cereal-Light';
+  color: rgb(34, 33, 33)
+}
+
 #reviews {
   display: grid;
-  grid-template-rows: 50px 100px 1fr;
+  grid-template-rows: 75px 100px 1fr;
   grid-template-columns: 60px 1fr 60px;
 }
 
 #searchSection {
+  display: grid;
   grid-row: 1;
   grid-column: 2;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
 
 #aggregatedReviews {

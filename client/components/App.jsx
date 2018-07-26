@@ -1,14 +1,19 @@
 import React from 'react';
 import ReviewList from './ReviewList.jsx';
 import AggregatedReviews from './AggregatedReviews.jsx';
+import Search from './Search.jsx';
 import $ from 'jquery';
 import './styles/AppStyle.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], aggregatedValues: {}};
+    this.state = {reviews: [], aggregatedValues: {}, numReviews: 0};
     this.getReviews();
+  }
+
+  handleSubmit() {
+    console.log('handled submit');
   }
 
   getReviews() {
@@ -28,6 +33,8 @@ class App extends React.Component {
       /* the shape of reviews is an array of tuples where the index 0 of the tuple is user info
       and index 1 is the associated review info */
       this.setState({reviews: reviews});
+      // record number of reviews
+      this.setState({numReviews: reviews.length});
     }).fail(() => {
       console.log('reviews get request failed');
     });
@@ -53,7 +60,9 @@ class App extends React.Component {
     // there are three distinct sections to the review component
     return (
       <div id='reviews'>
-        <div id='searchSection'><h1>Search Section</h1></div>
+        <div id='searchSection'>
+          <Search numReviews={this.state.numReviews} ratings={this.state.aggregatedValues} handleSubmit={this.handleSubmit}/>
+        </div>
         <div id='aggregatedReviews'>
           {Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.aggregatedValues} />}
         </div>
