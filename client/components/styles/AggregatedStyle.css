@@ -1,3 +1,4 @@
+
 .starSet {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -12,7 +13,7 @@
 }
 
 .star {
-  height: 10px;
+  height: 14px;
   display: inline-block;
   position: relative;
 }
@@ -32,15 +33,12 @@
   width: 0;
 }
 
-#testStar {
-  color: yellow;
-}
-
 #aggregateContainer {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr 1fr;
-  grid-row-gap: 5px;
+  grid-template-columns: 2fr 2fr 2fr 2fr;
+  grid-row-gap: 10px;
   grid-column-gap: 10px;
+
   /* align-content: center; */
 }
 
