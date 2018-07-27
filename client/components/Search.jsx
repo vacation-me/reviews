@@ -14,6 +14,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }  
 
+  // this function should be a utility function as it is duplicated in AggregatedReviews
   renderStars(rating) {
     let outputArray = [];
     let numStars = 0;
@@ -42,6 +43,7 @@ class Search extends React.Component {
     return outputArray;
   }
 
+  // continuosly updates the value of the input box
   handleChange(event) {
     this.setState({value: event.target.value});
   }
@@ -56,6 +58,7 @@ class Search extends React.Component {
           {this.renderStars(this.props.ratings.overall)}
         </div>
         <div id="barContainer">
+          {/* highlight box is added so both icon and input are highlighted when input is in focus */}
           <div id="highlightBox">
             <div id="iconContainer">
               <img id="searchIcon" src={magnifyingGlass} />
