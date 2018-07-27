@@ -4,6 +4,12 @@
   /* font-weight: 400; */
 }
 
+@font-face {
+  font-family: 'Cereal-Book';
+  src: url('./fonts/AirbnbCereal-Book.ttf') format('truetype');
+  /* font-weight: 400; */
+}
+
 .starSet {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -34,28 +40,51 @@
 #searchForm {
   display: grid;
   grid-column: 2;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: 1fr;
+  justify-self: start;
 }
 
 #searchBar {
   /* grid-column: 2; */
+  font-family: 'Cereal-Book';
   justify-self: stretch;
+  border: 0px;
+  color: rgb(120, 120, 120);
+  font-size: 13px;
+  padding: 5px;
+}
+
+#searchBar:focus {
+  outline: none;
 }
 
 #barContainer {
   display: grid;
   grid-column: 3;
-  grid-template-columns: 1fr 1fr;
+  justify-items: end;
+}
+
+#highlightBox {
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-gap: 4px;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+
+}
+
+#highlightBox:focus-within {
+  border: 1px solid teal;
 }
 
 #iconContainer {
   display: grid;
   grid-column: 1;
-  justify-self: stretch;
+  justify-self: end;
 }
 
 #searchIcon {
-  height: 10px;
+  height: 13px;
   justify-self: end;
   align-self: center;
 }

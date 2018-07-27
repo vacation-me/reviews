@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   handleSubmit() {
-    console.log('handled submit');
+    // console.log('handled submit');
   }
 
   getReviews() {

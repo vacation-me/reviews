@@ -10,7 +10,8 @@ import magnifyingGlass from './styles/icons/search.svg';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'Search reviews'};
+    this.state = {value: ''};
+    this.handleChange = this.handleChange.bind(this);
   }  
 
   renderStars(rating) {
@@ -55,12 +56,14 @@ class Search extends React.Component {
           {this.renderStars(this.props.ratings.overall)}
         </div>
         <div id="barContainer">
-          <div id="iconContainer">
-            <img id="searchIcon" src={magnifyingGlass} />
+          <div id="highlightBox">
+            <div id="iconContainer">
+              <img id="searchIcon" src={magnifyingGlass} />
+            </div>
+            <form id="searchForm" onSubmit={this.props.handleSubmit(this.state.value)}>
+              <input id="searchBar" type="text" value={this.state.value} placeholder="Search reviews" onChange={this.handleChange}/>
+            </form>
           </div>
-          <form id="searchForm" onSubmit={this.props.handleSubmit(this.state.value)}>
-            <input id="searchBar" type="text" value={this.state.value} onChange={this.handleChange}/>
-          </form>
         </div>
       </div>
     );
