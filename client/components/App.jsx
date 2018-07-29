@@ -14,7 +14,8 @@ class App extends React.Component {
 
   // created handler which is empty until search functionality is built
   handleSubmit() {
-    // console.log('handled submit');
+    console.log('handled submit');
+    // console.log('review')
   }
 
   getReviews() {
