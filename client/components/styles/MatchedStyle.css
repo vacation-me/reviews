@@ -1,0 +1,21 @@
+#matchedContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid lightgrey;
+  align-self: stretch;
+}
+
+#numReviews {
+  grid-column: 1;
+  align-self: center;
+  font-size: 13px;
+}
+
+#leaveSearch {
+  grid-column: 2;
+  align-self: center;
+  justify-self: end;
+  color: teal;
+  font-size: 13px;
+  cursor: pointer;
+}

@@ -12,6 +12,7 @@ class Search extends React.Component {
     super(props);
     this.state = {value: ''};
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }  
 
   // this function should be a utility function as it is duplicated in AggregatedReviews
@@ -43,6 +44,11 @@ class Search extends React.Component {
     return outputArray;
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.searchSubmit(this.state.value);
+  }
+
   // continuosly updates the value of the input box
   handleChange(event) {
     this.setState({value: event.target.value});
@@ -63,7 +69,7 @@ class Search extends React.Component {
             <div id="iconContainer">
               <img id="searchIcon" src={magnifyingGlass} />
             </div>
-            <form id="searchForm" onSubmit={this.props.handleSubmit(this.state.value)}>
+            <form id="searchForm" onSubmit={this.handleSubmit}>
               <input id="searchBar" type="text" value={this.state.value} placeholder="Search reviews" onChange={this.handleChange}/>
             </form>
           </div>
