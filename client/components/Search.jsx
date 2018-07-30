@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import './styles/SearchStyle.css';
+import styles from './styles/SearchStyle.css';
 import emptyStar from './styles/icons/star-clear.svg';
 import halfStar from './styles/icons/star-half.svg';
 import fullStar from './styles/icons/star.svg';
@@ -21,24 +21,24 @@ class Search extends React.Component {
     let numStars = 0;
     // this loop renders all initial full stars
     while (rating / 1 >= 1) {
-      outputArray.push(<img key={numStars.toString()}className="star" src={fullStar} />);
+      outputArray.push(<img key={numStars.toString()}className={styles.star} src={fullStar} />);
       rating -= 1;
       numStars += 1;
     }
     // this conditional chain renders either an empty, half, or full start depending on decimal
     if (rating > 0.75) {
-      outputArray.push(<img key={numStars.toString()} className="star" src={fullStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={fullStar} />);
       numStars += 1;
     } else if (rating > 0.25) {
-      outputArray.push(<img key={numStars.toString()} className="star" src={halfStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={halfStar} />);
       numStars += 1;
     } else {
-      outputArray.push(<img key={numStars.toString()} className="star" src={emptyStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
       numStars += 1;
     }
     // this renders remaining empty stars when necessary
     while (numStars !== 5) {
-      outputArray.push(<img key={numStars.toString()} className="star" src={emptyStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
       numStars += 1;
     }
     return outputArray;
@@ -56,21 +56,21 @@ class Search extends React.Component {
 
   render() {
     return (
-      <div id="searchContainer">
-        <div id="reviewCount">
+      <div id={styles.searchContainer}>
+        <div id={styles.reviewCount}>
           {this.props.numReviews} {(this.props.numReviews === 1) ? 'Review' : 'Reviews'}
         </div>
-        <div id="overallScore" className="starSet">
+        <div id={styles.overallScore} className={styles.starSet}>
           {this.renderStars(this.props.ratings.overall)}
         </div>
-        <div id="barContainer">
+        <div id={styles.barContainer}>
           {/* highlight box is added so both icon and input are highlighted when input is in focus */}
-          <div id="highlightBox">
-            <div id="iconContainer">
-              <img id="searchIcon" src={magnifyingGlass} />
+          <div id={styles.highlightBox}>
+            <div id={styles.iconContainer}>
+              <img id={styles.searchIcon} src={magnifyingGlass} />
             </div>
-            <form id="searchForm" onSubmit={this.handleSubmit}>
-              <input id="searchBar" type="text" value={this.state.value} placeholder="Search reviews" onChange={this.handleChange}/>
+            <form id={styles.searchForm} onSubmit={this.handleSubmit}>
+              <input id={styles.searchBar} type="text" value={this.state.value} placeholder="Search reviews" onChange={this.handleChange}/>
             </form>
           </div>
         </div>

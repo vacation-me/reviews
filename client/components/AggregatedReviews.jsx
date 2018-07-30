@@ -1,6 +1,5 @@
 import React from 'react';
-import $ from 'jquery';
-import './styles/AggregatedStyle.css';
+import styles from './styles/AggregatedStyle.css';
 import emptyStar from './styles/icons/star-clear.svg';
 import halfStar from './styles/icons/star-half.svg';
 import fullStar from './styles/icons/star.svg';
@@ -11,53 +10,53 @@ const AggregatedReviews = (props) => {
     let numStars = 0;
     // this loop renders all initial full stars
     while (rating / 1 >= 1) {
-      outputArray.push(<img key={numStars.toString()}className="star" src={fullStar} />);
+      outputArray.push(<img key={numStars.toString()}className={styles.star} src={fullStar} />);
       rating -= 1;
       numStars += 1;
     }
     // this conditional chain renders either an empty, half, or full start depending on decimal
     if (rating > 0.75) {
-      outputArray.push(<img key={numStars.toString()} className="star" src={fullStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={fullStar} />);
       numStars += 1;
     } else if (rating > 0.25) {
-      outputArray.push(<img key={numStars.toString()} className="star" src={halfStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={halfStar} />);
       numStars += 1;
     } else {
-      outputArray.push(<img key={numStars.toString()} className="star" src={emptyStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
       numStars += 1;
     }
     // this renders remaining empty stars when necessary
     while (numStars !== 5) {
-      outputArray.push(<img key={numStars.toString()} className="star" src={emptyStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
       numStars += 1;
     }
     return outputArray;
   };
 
   return (
-    <div id="aggregateContainer">
-      <div id="accuracy">Accuracy</div>
-      <div id="accuracyStars" className="starSet">
+    <div id={styles.aggregateContainer}>
+      <div id={styles.accuracy}>Accuracy</div>
+      <div id={styles.accuracyStars} className={styles.starSet}>
         {renderStars(props.ratings.accuracy)}
       </div>
-      <div id="location">Location</div>
-      <div id="locationStars" className="starSet">
+      <div id={styles.location}>Location</div>
+      <div id={styles.locationStars} className={styles.starSet}>
         {renderStars(props.ratings.location)}
       </div>
-      <div id="communication">Communication</div>
-      <div id="communicationStars" className="starSet">
+      <div id={styles.communication}>Communication</div>
+      <div id={styles.communicationStars} className={styles.starSet}>
         {renderStars(props.ratings.communication)}
       </div>
-      <div id="checkIn">Check-in</div>
-      <div id="checkInStars" className="starSet">
+      <div id={styles.checkIn}>Check-in</div>
+      <div id={styles.checkInStars} className={styles.starSet}>
         {renderStars(props.ratings.checkIn)}
       </div>
-      <div id="cleanliness">Cleanliness</div>
-      <div id="cleanlinessStars" className="starSet">
+      <div id={styles.cleanliness}>Cleanliness</div>
+      <div id={styles.cleanlinessStars} className={styles.starSet}>
         {renderStars(props.ratings.cleanliness)}
       </div>
-      <div id="value">Value</div>
-      <div id="valueStars" className="starSet">
+      <div id={styles.value}>Value</div>
+      <div id={styles.valueStars} className={styles.starSet}>
         {renderStars(props.ratings.value)}
       </div>
     </div>

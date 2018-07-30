@@ -4,7 +4,7 @@ import AggregatedReviews from './AggregatedReviews.jsx';
 import Search from './Search.jsx';
 import Matched from './Matched.jsx';
 import $ from 'jquery';
-import './styles/AppStyle.css';
+import styles from './styles/AppStyle.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -73,14 +73,14 @@ class App extends React.Component {
   render() {
     // there are three distinct sections to the review component
     return (
-      <div id='reviews'>
-        <div id='searchSection'>
+      <div id={styles.reviews}>
+        <div id={styles.searchSection}>
           <Search numReviews={this.state.numReviews} ratings={this.state.aggregatedValues} searchSubmit={this.searchSubmit}/>
         </div>
-        <div id='aggregatedReviews'>
+        <div id={styles.aggregatedReviews}>
           {this.state.search ? <Matched searched={this.state.searchedVal} handleClick={this.switchView} reviews={this.state.matched}/> : Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.aggregatedValues} />}
         </div>
-        <div id="reviewList">
+        <div id={styles.reviewList}>
           {this.state.reviews.length && <ReviewList reviews={this.state.search ? this.state.matched : this.state.reviews} />}
         </div>
       </div>

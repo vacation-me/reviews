@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
-import './styles/ListStyle.css';
+import styles from './styles/ListStyle.css';
 
 
 
@@ -15,7 +15,7 @@ class ReviewList extends React.Component {
     });
     const noItems = (<div><h1>No reviews were found.</h1></div>);
     return (
-      <div id="reviewContainer">
+      <div id={styles.reviewContainer}>
         {reviewList.length === 0 ? noItems : reviewList}
       </div>
     );
