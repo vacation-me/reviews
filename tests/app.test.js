@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import AggregatedReviews from '../client/components/AggregatedReviews';
 // import request from 'supertest';
 // import app from '../server/index.js';
+import styles from './styles/AggregatedStyle.css';
 import sampleData from './sampleData.js';
 import ReviewList from '../client/components/ReviewList';
 import ReviewEntry from '../client/components/ReviewEntry';

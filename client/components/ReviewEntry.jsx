@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/EntryStyle.css';
+import styles from './styles/EntryStyle.css';
 import flag from './styles/icons/flag.svg';
 
 const ReviewEntry = (props) => {
@@ -18,13 +18,13 @@ const ReviewEntry = (props) => {
   };
 
   return (
-    <div id="entryContainer">
-      <img src={props.rev[1].picture} id="reviewAvatar" />
-      <div id="reviewName">{props.rev[1].name}</div>
-      <div id="reviewDate">{formatDate(props.rev[0].reviewDate)}</div>
-      <div id="reviewText">{props.rev[0].reviewText}</div>
-      <div id="reviewFlag"><img id="flagIcon" src={flag} /></div>
-      <div id="reviewBorder"></div>
+    <div id={styles.entryContainer}>
+      <img src={props.rev[1].picture} id={styles.reviewAvatar} />
+      <div id={styles.reviewName}>{props.rev[1].name}</div>
+      <div id={styles.reviewDate}>{formatDate(props.rev[0].reviewDate)}</div>
+      <div id={styles.reviewText}>{props.rev[0].reviewText}</div>
+      <div id={styles.reviewFlag}><img id={styles.flagIcon} src={flag} /></div>
+      <div id={styles.reviewBorder}></div>
     </div>
   );
 };
