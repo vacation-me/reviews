@@ -16,19 +16,15 @@ app.get('/reviews/:id', (req, res) => {
   };
 
   models.reviews.getReviews((reviews) => {
-    // numReviews is counted to serve as the divisor when calcualting average scores
-    let numReviews = 0;
     // this sums the values for each categories
     for (let review of reviews) {
       for (let key in aggregateObject) {
         aggregateObject[key] = aggregateObject[key] + review[0].rating[key];
       }
-      // this incremements the divisor
-      numReviews += 1;
     }
     // this section calculates average score for each category
     for (let key in aggregateObject) {
-      aggregateObject[key] = aggregateObject[key] / numReviews;
+      aggregateObject[key] = aggregateObject[key] / reviews.length;
     }
     // the aggregateObject is added to the reviews array
     reviews.push(aggregateObject);
@@ -36,6 +32,6 @@ app.get('/reviews/:id', (req, res) => {
   }, req.params.id);
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3003;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './styles/EntryStyle.css';
+import './styles/EntryStyle.css';
 import flag from './styles/icons/flag.svg';
 
 const ReviewEntry = (props) => {

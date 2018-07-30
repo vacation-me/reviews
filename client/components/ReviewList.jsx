@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
-import style from './styles/ListStyle.css';
+import './styles/ListStyle.css';
 
 
 
@@ -13,7 +13,7 @@ class ReviewList extends React.Component {
     const reviewList = this.props.reviews.map((review, index) => {
       return <ReviewEntry key={index.toString()} rev={review} />;
     });
-    const noItems = (<div><h1>No movie was found.</h1></div>);
+    const noItems = (<div><h1>No reviews were found.</h1></div>);
     return (
       <div id="reviewContainer">
         {reviewList.length === 0 ? noItems : reviewList}
