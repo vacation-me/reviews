@@ -9,7 +9,7 @@ const AggregatedReviews = (props) => {
     let outputArray = [];
     let numStars = 0;
     // this loop renders all initial full stars
-    while (rating / 1 >= 1) {
+    while (rating / 1 > 1) {
       outputArray.push(<img key={numStars.toString()}className={styles.star} src={fullStar} />);
       rating -= 1;
       numStars += 1;
@@ -26,7 +26,7 @@ const AggregatedReviews = (props) => {
       numStars += 1;
     }
     // this renders remaining empty stars when necessary
-    while (numStars !== 5) {
+    while (numStars < 5) {
       outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
       numStars += 1;
     }
