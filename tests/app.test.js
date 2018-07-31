@@ -27,7 +27,9 @@ describe('Check ReviewList Component', () => {
 
 // describe('Check ReviewEntry Component', () => {
 //   test('Should reformat the date', () => {
-//     expect(ReviewEntry.formatDate(sampleData.reviews[0].reviewDate).split(' ').length).toBe(2);
+//     const wrapper = shallow(<ReviewEntry rev={sampleData.reviews} />);
+//     expect(wrapper.find('#reviewDate').text().split(' ').length).toBe(2);
+//     // expect(wrapper.formatDate(sampleData.reviews[0].reviewDate).split(' ').length).toBe(2);
 //   });
 // });
 

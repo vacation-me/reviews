@@ -1,10 +1,16 @@
 const express = require('express');
 const models = require('./model.js');
+// const path = require('path');
 const app = express();
 
-app.use(express.static('public'));
+app.use('/', express.static(`${__dirname}/../public`));
+app.use('/listing/:listingId', express.static(`/${__dirname}/../public`));
 
-app.get('/reviews/:id', (req, res) => {
+// app.get('*/bundle.js', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, '../public/bundle.js'));
+// });
+
+app.get('/reviews/:listingId', (req, res) => {
   let aggregateObject = {
     overall: 0,
     accuracy: 0,
@@ -14,7 +20,7 @@ app.get('/reviews/:id', (req, res) => {
     cleanliness: 0,
     value: 0,
   };
-
+  
   models.reviews.getReviews((reviews) => {
     // this sums the values for each categories
     for (let review of reviews) {
@@ -29,8 +35,9 @@ app.get('/reviews/:id', (req, res) => {
     // the aggregateObject is added to the reviews array
     reviews.push(aggregateObject);
     res.send(reviews);
-  }, req.params.id);
+  }, req.params.listingId);
 });
+
 
 const port = process.env.PORT || 3003;
 

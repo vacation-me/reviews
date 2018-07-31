@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {reviews: [], aggregatedValues: {}, numReviews: 0, search: false, matched: [], searchedVal: ''};
     this.searchSubmit = this.searchSubmit.bind(this);
     this.switchView = this.switchView.bind(this);
-    this.getReviews();
+    // this.getReviews();
   }
 
   switchView () {
@@ -46,12 +46,10 @@ class App extends React.Component {
     console.log('Matching: ', matchingReviews);
   }
 
-  getReviews() {
-    // temporary placeholder to select a random house to view
-    let randomHouse = Math.floor(100 * Math.random());
+  componentDidMount() {
     // get request retrieves reviews and aggregated values from server
     $.ajax({
-      url: `/reviews/${randomHouse}`,
+      url: `http://localhost:3003/reviews/${window.location.href.substr(window.location.href.length - 2)}`,
       type: 'GET',
       dataType: 'json',
     }).done((reviews) => {
