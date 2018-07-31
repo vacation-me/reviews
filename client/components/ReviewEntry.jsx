@@ -23,7 +23,7 @@ const ReviewEntry = (props) => {
       <div id={styles.reviewName}>{props.rev[1].name}</div>
       <div id={styles.reviewDate}>{formatDate(props.rev[0].reviewDate)}</div>
       <div id={styles.reviewText}>{props.rev[0].reviewText}</div>
-      <div id={styles.reviewFlag}><img id={styles.flagIcon} src={flag} /></div>
+      <div id={styles.reviewFlag}><img id={styles.flagIcon} src='https://s3-us-west-1.amazonaws.com/fec-reviews/flag.svg' /></div>
       <div id={styles.reviewBorder}></div>
     </div>
   );

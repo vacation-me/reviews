@@ -1,11 +1,8 @@
-@font-face {
-  font-family: 'Cereal-Light';
-  src: url('./fonts/AirbnbCereal-Light.ttf') format('truetype');
-  /* font-weight: 400; */
-}
+
 * {
-  font-family: 'Cereal-Light';
-  color: rgb(34, 33, 33)
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  color: #484848;
 }
 
 #reviews {

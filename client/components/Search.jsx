@@ -21,24 +21,24 @@ class Search extends React.Component {
     let numStars = 0;
     // this loop renders all initial full stars
     while (rating / 1 > 1) {
-      outputArray.push(<img key={numStars.toString()}className={styles.star} src={fullStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src='https://s3-us-west-1.amazonaws.com/fec-reviews/star.svg' />);
       rating -= 1;
       numStars += 1;
     }
     // this conditional chain renders either an empty, half, or full start depending on decimal
     if (rating > 0.75) {
-      outputArray.push(<img key={numStars.toString()} className={styles.star} src={fullStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src='https://s3-us-west-1.amazonaws.com/fec-reviews/star.svg' />);
       numStars += 1;
     } else if (rating > 0.25) {
-      outputArray.push(<img key={numStars.toString()} className={styles.star} src={halfStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src='https://s3-us-west-1.amazonaws.com/fec-reviews/star-half.svg' />);
       numStars += 1;
     } else {
-      outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src='https://s3-us-west-1.amazonaws.com/fec-reviews/star-clear.svg' />);
       numStars += 1;
     }
     // this renders remaining empty stars when necessary
     while (numStars < 5) {
-      outputArray.push(<img key={numStars.toString()} className={styles.star} src={emptyStar} />);
+      outputArray.push(<img key={numStars.toString()} className={styles.star} src='https://s3-us-west-1.amazonaws.com/fec-reviews/star-clear.svg' />);
       numStars += 1;
     }
     return outputArray;
@@ -67,7 +67,7 @@ class Search extends React.Component {
           {/* highlight box is added so both icon and input are highlighted when input is in focus */}
           <div id={styles.highlightBox}>
             <div id={styles.iconContainer}>
-              <img id={styles.searchIcon} src={magnifyingGlass} />
+              <img id={styles.searchIcon} src='https://s3-us-west-1.amazonaws.com/fec-reviews/search.svg' />
             </div>
             <form id={styles.searchForm} onSubmit={this.handleSubmit}>
               <input id={styles.searchBar} type="text" value={this.state.value} placeholder="Search reviews" onChange={this.handleChange}/>
