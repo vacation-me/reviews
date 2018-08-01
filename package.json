@@ -10,7 +10,8 @@
   "scripts": {
     "test": "jest --coverage",
     "seed-db": "node database-population.js",
-    "build": "webpack -d --watch && grunt build",
+    "build-dev": "webpack -d --watch",
+    "build": "webpack --mode production && grunt s3",
     "server-dev": "nodemon server/index.js"
   },
   "jest": {

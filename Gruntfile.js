@@ -7,18 +7,20 @@ module.exports = function(grunt) {
     aws_s3: {
       options: {
         accessKeyId: '<%= aws.AWSAccessKeyId %>',
-        secretAccessKey: '<%= aws.AWSSecretKey %>'
+        secretAccessKey: '<%= aws.AWSSecretKey %>',
+        region: 'us-west-1',
       },
       dist: {
         options: {
-          bucket: 'david-proxy'
+          // region: 'US West',
+          bucket: 'david-proxy',
         },
         files: [
           {
             expand: true,
             cwd: 'public/',
             src: [ '**' ],
-            dest: '/'
+            dest: '/',
           }
         ]
       }
@@ -28,5 +30,5 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-aws-s3');
 
-  grunt.registerTask( 'build', 'aws_s3:dist' );
+  grunt.registerTask( 's3', 'aws_s3:dist' );
 };
