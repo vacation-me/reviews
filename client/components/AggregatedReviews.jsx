@@ -1,8 +1,5 @@
 import React from 'react';
 import styles from './styles/AggregatedStyle.css';
-import emptyStar from './styles/icons/star-clear.svg';
-import halfStar from './styles/icons/star-half.svg';
-import fullStar from './styles/icons/star.svg';
 
 const AggregatedReviews = (props) => {
   const renderStars = function (rating) {

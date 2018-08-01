@@ -1,10 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import styles from './styles/SearchStyle.css';
-import emptyStar from './styles/icons/star-clear.svg';
-import halfStar from './styles/icons/star-half.svg';
-import fullStar from './styles/icons/star.svg';
-import magnifyingGlass from './styles/icons/search.svg';
+
 
 
 class Search extends React.Component {
