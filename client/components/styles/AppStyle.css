@@ -8,13 +8,15 @@
 .reviews {
   display: grid;
   grid-template-rows: 75px 100px 1fr;
-  grid-template-columns: 60px 1fr 60px;
+  /* grid-template-columns: 60px 1fr 60px; */
+  max-width: 600px;
+  margin: auto;
 }
 
 #searchSection {
   display: grid;
   grid-row: 1;
-  grid-column: 2;
+  /* grid-column: 2; */
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;
 }
@@ -22,11 +24,11 @@
 #aggregatedReviews {
   display: grid;
   grid-row: 2;
-  grid-column: 2;
+  /* grid-column: 2; */
   /* align-content: center; */
 }
 
 #reviewList {
   grid-row: 3;
-  grid-column: 2;
+  /* grid-column: 2; */
 }
