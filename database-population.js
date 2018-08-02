@@ -45,13 +45,13 @@ const generateReviews = function () {
 
 generateUsers();
 
+const processes = [];
+
 const populateUsers = function () {
-  db.User.insertMany(users, function (error, docs) {
-    if (error) {
-      console.log(error);
-    }
-    console.log(docs);
-  });
+  processes.push(db.User.insertMany(users).catch(err => {
+    console.log(err);
+    process.exit(-1);
+  }));
 };
 
 populateUsers();
@@ -59,15 +59,14 @@ populateUsers();
 generateReviews();
 
 const populateReviews = function () {
-  db.Review.insertMany(reviews, function (error, docs) {
-    if (error) {
-      console.log(error);
-    }
-    console.log(docs);
-  });
+  processes.push(db.Review.insertMany(reviews).catch(err => {
+    console.log(err);
+    process.exit(-1);
+  }));
 };
 
 populateReviews();
 
+Promise.all(processes).then(() => process.exit(0));
 // tell node to terminate
 // process.exit(-1);
