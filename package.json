@@ -13,7 +13,7 @@
     "build-dev": "webpack -d --watch",
     "build": "webpack --mode production && grunt s3",
     "server-dev": "nodemon server/index.js",
-    "start": "node database-population.js && nodemon server/index.js"
+    "start": "node database-population.js && node server/index.js"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>tests/setup.js",
