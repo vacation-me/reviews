@@ -71,7 +71,7 @@ class App extends React.Component {
   render() {
     // there are three distinct sections to the review component
     return (
-      <div id={styles.reviews}>
+      <div className={styles.reviews} id="Reviews">
         <div id={styles.searchSection}>
           <Search numReviews={this.state.numReviews} ratings={this.state.aggregatedValues} searchSubmit={this.searchSubmit}/>
         </div>
