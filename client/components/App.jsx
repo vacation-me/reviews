@@ -49,7 +49,7 @@ class App extends React.Component {
   componentDidMount() {
     // get request retrieves reviews and aggregated values from server
     $.ajax({
-      url: `/reviews/${window.location.href.substr(window.location.href.length - 2)}`,
+      url: `/reviews/${window.location.href.substr(window.location.href.indexOf('listing/') + 8)}`,
       type: 'GET',
       dataType: 'json',
     }).done((reviews) => {
