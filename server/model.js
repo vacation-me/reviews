@@ -38,6 +38,15 @@ module.exports = {
           cb(null, results);
         }
       });
+    },
+    deleteReviews: function(cb, id) {
+      db.Review.findByIdAndRemove(id, (err, results) => {
+        if (err) {
+          cb(err);
+        } else {
+          cb(null, results);
+        }
+      });
     }
   }
 };

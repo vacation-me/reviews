@@ -80,6 +80,18 @@ app.put('/reviews/:listingId', (req, res) => {
   }, req.body._id, aggregateObject);
 });
 
+app.delete('/reviews/:listingId', (req, res) => {
+  let reviewId = req.body._id;
+
+  models.reviews.deleteReviews((err, results) => {
+    if (err) {
+      res.status(500).send('unable to delete review', err);
+    } else {
+      res.status(200).send('deleted the review');
+    }
+  }, reviewId);
+});
+
 const port = process.env.PORT || 3003;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
