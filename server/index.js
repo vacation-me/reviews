@@ -1,10 +1,14 @@
 const express = require('express');
 const models = require('./model.js');
 // const path = require('path');
+const bodyParser = require('body-parser');
+
 const app = express();
 
 app.use('/', express.static(`${__dirname}/../public`));
 app.use('/listing/:listingId', express.static(`/${__dirname}/../public`));
+
+app.use(bodyParser.json());
 
 app.use((req, res, next) =>{
   res.setHeader('Access-Control-Allow-Headers', '*');
@@ -45,7 +49,67 @@ app.get('/reviews/:listingId', (req, res) => {
   }, req.params.listingId);
 });
 
+app.post('/reviews/:listingId', (req, res) => {
+  let aggregateObject = {
+    houseId: req.params.listingId,
+    reviewTitle: req.body.reviewTitle,
+    reviewText: req.body.reviewText,
+    reviewDate: req.body.reviewDate
+  };
+
+  models.reviews.postReviews((err, results) => {
+    if (err) {
+      res.status(500).send('unable to save to database', err);
+    } else {
+      res.status(200).send('item saved to database');
+    }
+  }, aggregateObject);
+
+});
+
+app.put('/reviews/:listingId', (req, res) => {
+  let aggregateObject = {
+    reviewText: req.body.reviewText,
+  };
+  models.reviews.updateReviews((err, results) => {
+    if (err) {
+      res.status(500).send('unable to save changes to database', err);
+    } else {
+      res.status(200).send('changes saved to database');
+    }
+  }, req.body._id, aggregateObject);
+});
+
+app.delete('/reviews/:listingId', (req, res) => {
+  let reviewId = req.body._id;
+
+  models.reviews.deleteReviews((err, results) => {
+    if (err) {
+      res.status(500).send('unable to delete review', err);
+    } else {
+      res.status(200).send('deleted the review');
+    }
+  }, reviewId);
+});
 
 const port = process.env.PORT || 3003;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
