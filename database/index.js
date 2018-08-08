@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://database/docker_test');
+mongoose.connect('mongodb://localhost/docker_test');
 
 const Schema = mongoose.Schema;
 
