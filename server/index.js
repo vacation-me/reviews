@@ -67,6 +67,37 @@ app.post('/reviews/:listingId', (req, res) => {
 
 });
 
+app.put('/reviews/:listingId', (req, res) => {
+  let aggregateObject = {
+    reviewText: req.body.reviewText,
+  };
+  models.reviews.updateReviews((err, results) => {
+    if (err) {
+      res.status(500).send('unable to save changes to database', err);
+    } else {
+      res.status(200).send('changes saved to database');
+    }
+  }, req.body._id, aggregateObject);
+});
+
 const port = process.env.PORT || 3003;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
