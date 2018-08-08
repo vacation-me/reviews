@@ -21,7 +21,7 @@ module.exports = {
         });
       });
     },
-     postReviews: function(cb, content) {
+    postReviews: function(cb, content) {
       let newReview = new db.Review(content);
       newReview.save((err, results) => {
         if (err) {
