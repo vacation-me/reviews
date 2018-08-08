@@ -1,13 +1,11 @@
-# Project Name
+# Reviews microservice for vacation-me 
 
-> Project description
+> A dynamic component for reviews on a vacation rental site
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/vacation-me/details
+  - https://github.com/vacation-me/bookings
 
 ## Table of Contents
 
@@ -15,9 +13,28 @@
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Usage
+## CRUD API Usage
 
-> Some usage instructions
+> Send all AJAX requests to '/reviews/:listingId' where listingId is the currently-viewed listing's houseId
+
+>To read a dataset from the database, send a HTTP GET request with url endpoint '/reviews/:listingId'
+
+>To add a dataset to the database, send a HTTP POST request with url endpoint '/reviews/:listingId' and a request body shaped as a JSON object with the following format:
+```sh
+{    
+  "reviewTitle": "new Review",
+  "reviewText": "new Review",
+  "reviewDate": "2017-10-17T18:14:16.456Z"
+}
+```
+>To update a dataset in the database, send a HTTP PUT request with url endpoint '/reviews/:listingId' and a request body shaped as a JSON object with the following format with the updated information:
+```sh
+{
+  "reviewText": "Updated Review"
+}
+```
+
+>To delete a dataset from the database, send a HTTP DELETE request with url endpoint '/reviews/:listingId'
 
 ## Requirements
 
