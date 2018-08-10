@@ -14,7 +14,7 @@ const getRandomDate = () => {
 const generateData = () => {
   let review = {};
 
-  for (let i = 1; i < 2500001; i++) {
+  for (let i = 8000001; i < 10000001; i++) {
     review.id = i;
     review.houseId = getRandomNumber(1, 100);
     review.name = faker.name.findName();
@@ -29,7 +29,7 @@ const generateData = () => {
     review.valueRating = getRandomNumber(1, 5);
     review.overallRating = ((review.accuracyRating + review.locationRating + review.communicationRating + review.checkinRating + review.cleanlinessRating + review.valueRating) / 6).toFixed(2);    
   
-    console.log(`${review.id}, ${review.houseId}, ${review.name}, ${review.picture}, ${review.reviewText}, ${review.reviewDate}, ${review.accuracyRating}, ${review.locationRating}, ${review.communicationRating}, ${review.checkinRating}, ${review.cleanlinessRating}, ${review.valueRating}, ${review.overallRating}`);
+    console.log(`${review.id},${review.houseId},${review.name},${review.picture},${review.reviewText},${review.reviewDate},${review.accuracyRating},${review.locationRating},${review.communicationRating},${review.checkinRating},${review.cleanlinessRating},${review.valueRating},${review.overallRating}`);
   }
 };
 
