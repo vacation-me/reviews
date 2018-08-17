@@ -1,4 +1,4 @@
-const db = require('./index.js');
+const db = require('./index');
 
 const findReviews = (callback, id) => {
   db.query(`SELECT * from reviews WHERE houseId = ${id}`, (err, data) => {

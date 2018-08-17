@@ -14,9 +14,9 @@ const getRandomDate = () => {
 const generateData = () => {
   let review = {};
 
-  for (let i = 8000001; i < 10000001; i++) {
+  for (let i = 98000001; i < 100000001; i++) {
     review.id = i;
-    review.houseId = getRandomNumber(1, 100);
+    review.houseId = getRandomNumber(1, 10000000);
     review.name = faker.name.findName();
     review.picture = `https://s3-us-west-1.amazonaws.com/fec-reviews/${getRandomNumber(1, 10)}.jpg`;
     review.reviewText = faker.lorem.paragraph();
