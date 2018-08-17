@@ -39,50 +39,29 @@ app.get('/reviews/:listingId', (req, res) => {
   }, id);
 });
 
-// app.get('/reviews/:listingId', (req, res) => {
-//   let aggregateObject = {
-//     overall: 0,
-//     accuracy: 0,
-//     location: 0,
-//     communication: 0,
-//     checkIn: 0,
-//     cleanliness: 0,
-//     value: 0,
-//   };
-  
-//   models.reviews.getReviews((reviews) => {
-//     // this sums the values for each categories
-//     for (let review of reviews) {
-//       for (let key in aggregateObject) {
-//         aggregateObject[key] = aggregateObject[key] + review[0].rating[key];
-//       }
-//     }
-//     // this section calculates average score for each category
-//     for (let key in aggregateObject) {
-//       aggregateObject[key] = aggregateObject[key] / reviews.length;
-//     }
-//     // the aggregateObject is added to the reviews array
-//     reviews.push(aggregateObject);
-//     res.send(reviews);
-//   }, req.params.listingId);
-// });
-
-app.post('/reviews/:listingId', (req, res) => {
+app.post('/reviews/:listingId', (req, res) => { 
   let aggregateObject = {
+    id: req.body.id,
     houseId: req.params.listingId,
-    reviewTitle: req.body.reviewTitle,
+    name: req.body.name,
+    picture: req.body.picture,
     reviewText: req.body.reviewText,
-    reviewDate: req.body.reviewDate
-  };
-
-  models.reviews.postReviews((err, results) => {
-    if (err) {
-      res.status(500).send('unable to save to database', err);
+    reviewDate: req.body.reviewDate,
+    accuracyRating: req.body.accuracyRating,
+    locationRating: req.body.locationRating,
+    communicationRating: req.body.communicationRating,
+    checkinRating: req.body.checkinRating,
+    cleanlinessRating: req.body.cleanlinessRating,
+    valueRating: req.body.valueRating,
+    overallRating: req.body.overallRating
+  }
+  Reviews.postReview((err, results) => {
+    if(err) {
+      res.status(500).send(err);
     } else {
-      res.status(200).send('item saved to database');
+      console.log('New Review Posted');
     }
   }, aggregateObject);
-
 });
 
 app.put('/reviews/:listingId', (req, res) => {

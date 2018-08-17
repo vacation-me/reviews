@@ -10,7 +10,22 @@ const findReviews = (callback, id) => {
   })
 };
 
+const postReview = (callback, context) => {
+  db.query(`INSERT INTO reviews VALUES (${context.id}, ${context.houseId}, ${context.name}, ${context.picture}, ${context.reviewText}, ${context.reviewDate}, ${context.accuracyRating}, ${context.locationRating}, ${context.communicationRating}, ${context.checkinRating}, ${context.cleanlinessRating}, ${context.valueRating}, ${context.overallRating} `, (err, data) => {
+  	if(err) {
+      callback(err);
+  	} else {
+  	  callback(null, data);
+  	}
+  })
+};
+
 
 module.exports = {
-  findReviews
+  findReviews,
+  postReview
 }
+
+
+
+  
