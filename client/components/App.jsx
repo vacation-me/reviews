@@ -9,7 +9,7 @@ import styles from './styles/AppStyle.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {reviews: [], aggregatedValues: {}, numReviews: 0, search: false, matched: [], searchedVal: ''};
+    this.state = {reviews: [], aggregatedValues: {}, overallRatings: {}, numReviews: 0, search: false, matched: [], searchedVal: ''};
     this.searchSubmit = this.searchSubmit.bind(this);
     this.switchView = this.switchView.bind(this);
     // this.getReviews();
@@ -54,15 +54,32 @@ class App extends React.Component {
       dataType: 'json',
     }).done((reviews) => {
       // separate aggregatedValues to send down to AggregatedReviews
-      const aggregatedValues = reviews[reviews.length - 1];
+      let accuracyRating = [];
+      let locationRating = [];
+      let communicationRating = [];
+      let checkinRating = [];
+      let cleanlinessRating = [];
+      let valueRating = [];  
+      let overallRating = [];
+        for (let i = 0; i < reviews.length; i++) {
+          accuracyRating.push(reviews[i].accuracyrating);
+          locationRating.push(reviews[i].locationrating);
+          communicationRating.push(reviews[i].communicationrating);
+          checkinRating.push(reviews[i].checkinrating);
+          cleanlinessRating.push(reviews[i].cleanlinessrating);
+          valueRating.push(reviews[i].valuerating);
+          overallRating.push(reviews[i].overallrating);
+        }
+      const aggregatedValues = [accuracyRating, locationRating, communicationRating, checkinRating, cleanlinessRating, valueRating];
+      const overallRatings = overallRating;
       this.setState({aggregatedValues: aggregatedValues});
       // remove aggregatedValues from reviews array
-      reviews.splice(-1, 1);
+      // reviews.splice(-1, 1);
       /* the shape of reviews is an array of tuples where the index 0 of the tuple is user info
       and index 1 is the associated review info */
-      this.setState({reviews: reviews});
+      this.setState({reviews: reviews, numReviews: reviews.length, overallRatings: overallRatings});
       // record number of reviews
-      this.setState({numReviews: reviews.length});
+      // this.setState({numReviews: reviews.length});
     }).fail(() => {
       console.log('reviews get request failed');
     });
@@ -73,7 +90,7 @@ class App extends React.Component {
     return (
       <div className={styles.reviews} id="Reviews">
         <div id={styles.searchSection}>
-          <Search numReviews={this.state.numReviews} ratings={this.state.aggregatedValues} searchSubmit={this.searchSubmit}/>
+          <Search numReviews={this.state.numReviews} ratings={this.state.overallRatings} searchSubmit={this.searchSubmit}/>
         </div>
         <div id={styles.aggregatedReviews}>
           {this.state.search ? <Matched searched={this.state.searchedVal} handleClick={this.switchView} reviews={this.state.matched}/> : Object.keys(this.state.aggregatedValues).length && <AggregatedReviews ratings={this.state.aggregatedValues} />}
