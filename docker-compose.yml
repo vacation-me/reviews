@@ -8,6 +8,12 @@ services:
     ports: 
       - "3003:3003"
 
+    environment: 
+      - MONGO_URI=mongo_server
+
+    links:
+      - database:mongo_server
+
   database:
     image: mongo:latest
     ports:

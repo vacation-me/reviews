@@ -21,10 +21,8 @@ checkinRating INT,
 cleanlinessRating INT,
 valueRating INT,
 overallRating DECIMAL,
-PRIMARY KEY(id, houseId)
+PRIMARY KEY(houseId, id)
 );
-
-CREATE INDEX ON reviews (houseId);
 
 COPY reviews (id, houseId, name, picture, reviewText, reviewDate, accuracyRating, locationRating, communicationRating, checkinRating, cleanlinessRating, valueRating, overallRating) FROM './database/data/reviews1.csv' WITH DELIMITER=',' AND HEADER=FALSE;
 COPY reviews (id, houseId, name, picture, reviewText, reviewDate, accuracyRating, locationRating, communicationRating, checkinRating, cleanlinessRating, valueRating, overallRating) FROM './database/data/reviews2.csv' WITH DELIMITER=',' AND HEADER=FALSE;
