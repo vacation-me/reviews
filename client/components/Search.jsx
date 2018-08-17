@@ -13,9 +13,14 @@ class Search extends React.Component {
   }  
 
   // this function should be a utility function as it is duplicated in AggregatedReviews
-  renderStars(rating) {
+  renderStars(ratingsArray) {
     let outputArray = [];
     let numStars = 0;
+    let sum = 0;
+    for (let i = 0; i < ratingsArray.length; i++) {
+      sum += parseFloat(ratingsArray[i]);
+    }
+    let rating = sum.toFixed(2) / ratingsArray.length;
     // this loop renders all initial full stars
     while (rating / 1 > 1) {
       outputArray.push(<img key={numStars.toString()} className={styles.star} src='https://s3-us-west-1.amazonaws.com/fec-reviews/star.svg' />);
@@ -58,7 +63,7 @@ class Search extends React.Component {
           {this.props.numReviews} {(this.props.numReviews === 1) ? 'Review' : 'Reviews'}
         </div>
         <div id={styles.overallScore} className={styles.starSet}>
-          {this.renderStars(this.props.ratings.overall)}
+          {this.renderStars(this.props.ratings)}
         </div>
         <div id={styles.barContainer}>
           {/* highlight box is added so both icon and input are highlighted when input is in focus */}
