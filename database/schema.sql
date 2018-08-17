@@ -27,6 +27,8 @@ overallRating DECIMAL NOT NULL
 
 );
 
+CREATE INDEX ON reviews (houseId);
+
 \COPY reviews FROM './database/data/reviews1.csv' WITH (FORMAT csv);
 \COPY reviews FROM './database/data/reviews2.csv' WITH (FORMAT csv);
 \COPY reviews FROM './database/data/reviews3.csv' WITH (FORMAT csv);
