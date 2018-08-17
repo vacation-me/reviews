@@ -1,3 +1,6 @@
+require('dotenv').config();
+require('newrelic');
+
 const express = require('express');
 const models = require('./model.js');
 const Reviews = require('../database/Reviews.js');
