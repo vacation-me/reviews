@@ -27,6 +27,7 @@
     ]
   },
   "dependencies": {
+    "artillery": "^1.6.0-22",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "jquery": "^3.3.1",

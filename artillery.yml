@@ -1,0 +1,13 @@
+config:
+  target: 'http://127.0.0.1:3001'
+  phases:
+    - duration: 3000
+      arrivalRate: 1000
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+scenarios:
+  - flow:
+    - get:
+        url: "/reviews/{{$randomNumber(1,10000)}}"
+    count: 200

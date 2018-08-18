@@ -25,11 +25,12 @@ app.use((req, res, next) =>{
 //   res.sendFile(path.resolve(__dirname, '../public/bundle.js'));
 // });
 
+//this is the client url
 app.get('/listing/:listingId', function(req, res) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-//Change the url path... listings/:listingId/reviews
+//Change the API url path... listings/:listingId/reviews
 app.get('/reviews/:listingId', (req, res) => {
   const id = Number(req.params.listingId);
   Reviews.findReviews((err, results) => {
