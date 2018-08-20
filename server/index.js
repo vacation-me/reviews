@@ -6,6 +6,7 @@ const models = require('./model.js');
 const Reviews = require('../database/Reviews.js');
 const path = require('path');
 const bodyParser = require('body-parser');
+const redis = require('redis');
 
 const app = express();
 
@@ -30,18 +31,32 @@ app.get('/listing/:listingId', function(req, res) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
+
+const client = redis.createClient();
+
+
 //Change the API url path... listings/:listingId/reviews
 app.get('/reviews/:listingId', (req, res) => {
   const id = Number(req.params.listingId);
-  Reviews.findReviews((err, results) => {
-    if(err) {
-      res.status(500).send(err);
+  client.get(`/reviews/${id}`, (err, results) => {
+    if(err || !results) {
+      err ? console.log(err) : console.log('no data in redis. will scan postgresql');
+      Reviews.findReviews((err, data) => {
+        if(err) {
+          res.status(500).send(err);
+        } else {
+          client.setex(`/reviews/${id}`, 21600, JSON.stringify(data.rows));
+          res.send(data.rows);
+        }
+      }, id);
     } else {
-      // console.log(results.rows);
+      console.log('found data in redis');
       res.send(results.rows);
     }
-  }, id);
+  });
 });
+
+//redis throw error only if there is an internal error in redis
 
 app.post('/reviews/:listingId', (req, res) => { 
   let aggregateObject = {
@@ -96,21 +111,3 @@ app.delete('/reviews/:listingId', (req, res) => {
 const port = process.env.PORT || 3001;
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
