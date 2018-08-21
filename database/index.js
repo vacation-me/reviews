@@ -13,7 +13,6 @@ pool.connect((err, client) => {
   } else {
     console.log('connected to db');
   }
-  client.release();
 });
 
 module.exports = pool;
